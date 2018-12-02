@@ -81,6 +81,8 @@ extern WCHAR						g_wsCmdPass[MAX_SRV_PASS+1];
 extern WCHAR						g_wsCmdIP[64];
 extern int								g_nCmdPort;
 extern int								g_nStageLoadType;
+extern int							g_nMaxCost;
+extern int							g_nMaxItemStockCount;
 
 #if USE_LUA
 extern lua_State *g_L;
@@ -147,7 +149,7 @@ extern bool C_SetEffectRotation(double effect_no, double rot, double effect_time
 extern bool C_SetEffectScale(double effect_no, double scalex, double scaley);
 extern bool C_SetEffectScalling(double effect_no, double scalex, double scaley, double effect_time=0);
 extern bool C_SetEffectAnimation(double effect_no, double atime, double acount, bool loop, double effect_time=0);
-extern bool C_SetEffectTexture(int nEffectNo, double left, double top, double right, double bottom);
+extern bool C_SetEffectTexture(int effect_no, double left, double top, double right, double bottom);
 
 extern int C_AddBGEffect(double chr_id, double left, double top, double right, double bottom, double x, double y, double age);
 extern bool C_RemoveBGEffect(double effect_no);

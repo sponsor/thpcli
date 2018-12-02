@@ -253,8 +253,10 @@ void CStageCharacter::SetTexture(RECT* prcTexture)
 void CStageCharacter::CalcDrawRect()
 {
 	int nAnimationIndex = m_nAnimationIndex;
-	if (p_pSession->dir == USER_DIRECTION_LEFT)
+	if (p_pSession->dir == USER_DIRECTION_LEFT) {
+
 		nAnimationIndex += m_nAnimationCount;
+	}
 /*
 	if (m_bDrawTrigger)
 	{

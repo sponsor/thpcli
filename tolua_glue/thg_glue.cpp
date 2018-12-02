@@ -1,6 +1,6 @@
 /*
 ** Lua binding: thg
-** Generated automatically by tolua++-1.0.92 on 12/31/16 03:14:32.
+** Generated automatically by tolua++-1.0.92 on 12/02/18 19:14:19.
 */
 
 #ifndef __cplusplus
@@ -17,20 +17,6 @@ TOLUA_API int  tolua_thg_open (lua_State* tolua_S);
 
 /* function to release collected object via destructor */
 #ifdef __cplusplus
-
-static int tolua_collect_type_ground (lua_State* tolua_S)
-{
- type_ground* self = (type_ground*) tolua_tousertype(tolua_S,1,0);
-	Mtolua_delete(self);
-	return 0;
-}
-
-static int tolua_collect_DWORD (lua_State* tolua_S)
-{
- DWORD* self = (DWORD*) tolua_tousertype(tolua_S,1,0);
-	Mtolua_delete(self);
-	return 0;
-}
 
 static int tolua_collect_type_session (lua_State* tolua_S)
 {
@@ -52,6 +38,13 @@ static int tolua_collect_type_blt (lua_State* tolua_S)
 	Mtolua_delete(self);
 	return 0;
 }
+
+static int tolua_collect_type_ground (lua_State* tolua_S)
+{
+ type_ground* self = (type_ground*) tolua_tousertype(tolua_S,1,0);
+	Mtolua_delete(self);
+	return 0;
+}
 #endif
 
 
@@ -59,7 +52,6 @@ static int tolua_collect_type_blt (lua_State* tolua_S)
 static void tolua_reg_types (lua_State* tolua_S)
 {
  tolua_usertype(tolua_S,"type_ground");
- tolua_usertype(tolua_S,"DWORD");
  tolua_usertype(tolua_S,"E_TYPE_USER_DIRECTION");
  tolua_usertype(tolua_S,"type_session");
  tolua_usertype(tolua_S,"wchar_t");
@@ -247,66 +239,6 @@ static int tolua_set_type_session_ay(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
-/* get function: lx of class  type_session */
-#ifndef TOLUA_DISABLE_tolua_get_type_session_lx
-static int tolua_get_type_session_lx(lua_State* tolua_S)
-{
-  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
-#ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'lx'",NULL);
-#endif
-  tolua_pushnumber(tolua_S,(lua_Number)self->lx);
- return 1;
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* set function: lx of class  type_session */
-#ifndef TOLUA_DISABLE_tolua_set_type_session_lx
-static int tolua_set_type_session_lx(lua_State* tolua_S)
-{
-  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
-#ifndef TOLUA_RELEASE
-  tolua_Error tolua_err;
-  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'lx'",NULL);
-  if (!tolua_isnumber(tolua_S,2,0,&tolua_err))
-   tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
-#endif
-  self->lx = ((short)  tolua_tonumber(tolua_S,2,0))
-;
- return 0;
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* get function: ly of class  type_session */
-#ifndef TOLUA_DISABLE_tolua_get_type_session_ly
-static int tolua_get_type_session_ly(lua_State* tolua_S)
-{
-  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
-#ifndef TOLUA_RELEASE
-  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'ly'",NULL);
-#endif
-  tolua_pushnumber(tolua_S,(lua_Number)self->ly);
- return 1;
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* set function: ly of class  type_session */
-#ifndef TOLUA_DISABLE_tolua_set_type_session_ly
-static int tolua_set_type_session_ly(lua_State* tolua_S)
-{
-  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
-#ifndef TOLUA_RELEASE
-  tolua_Error tolua_err;
-  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'ly'",NULL);
-  if (!tolua_isnumber(tolua_S,2,0,&tolua_err))
-   tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
-#endif
-  self->ly = ((short)  tolua_tonumber(tolua_S,2,0))
-;
- return 0;
-}
-#endif //#ifndef TOLUA_DISABLE
-
 /* get function: angle of class  type_session */
 #ifndef TOLUA_DISABLE_tolua_get_type_session_angle
 static int tolua_get_type_session_angle(lua_State* tolua_S)
@@ -362,6 +294,36 @@ static int tolua_set_type_session_obj_no(lua_State* tolua_S)
    tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
 #endif
   self->obj_no = ((short)  tolua_tonumber(tolua_S,2,0))
+;
+ return 0;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* get function: sess_index of class  type_session */
+#ifndef TOLUA_DISABLE_tolua_get_type_session_unsigned_sess_index
+static int tolua_get_type_session_unsigned_sess_index(lua_State* tolua_S)
+{
+  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'sess_index'",NULL);
+#endif
+  tolua_pushnumber(tolua_S,(lua_Number)self->sess_index);
+ return 1;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* set function: sess_index of class  type_session */
+#ifndef TOLUA_DISABLE_tolua_set_type_session_unsigned_sess_index
+static int tolua_set_type_session_unsigned_sess_index(lua_State* tolua_S)
+{
+  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  tolua_Error tolua_err;
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'sess_index'",NULL);
+  if (!tolua_isnumber(tolua_S,2,0,&tolua_err))
+   tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
+#endif
+  self->sess_index = ((unsigned char)  tolua_tonumber(tolua_S,2,0))
 ;
  return 0;
 }
@@ -568,7 +530,7 @@ static int tolua_get_thg_type_session_option(lua_State* tolua_S)
  if (tolua_index<0 || tolua_index>=OBJ_OPTION_COUNT)
   tolua_error(tolua_S,"array indexing out of range.",NULL);
 #endif
-  tolua_pushusertype(tolua_S,(void*)&self->option[tolua_index],"DWORD");
+ tolua_pushnumber(tolua_S,(lua_Number)self->option[tolua_index]);
  return 1;
 }
 #endif //#ifndef TOLUA_DISABLE
@@ -594,7 +556,7 @@ static int tolua_set_thg_type_session_option(lua_State* tolua_S)
  if (tolua_index<0 || tolua_index>=OBJ_OPTION_COUNT)
   tolua_error(tolua_S,"array indexing out of range.",NULL);
 #endif
-  self->option[tolua_index] = *((DWORD*)  tolua_tousertype(tolua_S,3,0));
+  self->option[tolua_index] = ((unsigned long)  tolua_tonumber(tolua_S,3,0));
  return 0;
 }
 #endif //#ifndef TOLUA_DISABLE
@@ -676,6 +638,66 @@ static int tolua_set_type_session_unsigned_name_len(lua_State* tolua_S)
    tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
 #endif
   self->name_len = ((unsigned char)  tolua_tonumber(tolua_S,2,0))
+;
+ return 0;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* get function: lx of class  type_session */
+#ifndef TOLUA_DISABLE_tolua_get_type_session_lx
+static int tolua_get_type_session_lx(lua_State* tolua_S)
+{
+  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'lx'",NULL);
+#endif
+  tolua_pushnumber(tolua_S,(lua_Number)self->lx);
+ return 1;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* set function: lx of class  type_session */
+#ifndef TOLUA_DISABLE_tolua_set_type_session_lx
+static int tolua_set_type_session_lx(lua_State* tolua_S)
+{
+  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  tolua_Error tolua_err;
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'lx'",NULL);
+  if (!tolua_isnumber(tolua_S,2,0,&tolua_err))
+   tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
+#endif
+  self->lx = ((short)  tolua_tonumber(tolua_S,2,0))
+;
+ return 0;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* get function: ly of class  type_session */
+#ifndef TOLUA_DISABLE_tolua_get_type_session_ly
+static int tolua_get_type_session_ly(lua_State* tolua_S)
+{
+  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'ly'",NULL);
+#endif
+  tolua_pushnumber(tolua_S,(lua_Number)self->ly);
+ return 1;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* set function: ly of class  type_session */
+#ifndef TOLUA_DISABLE_tolua_set_type_session_ly
+static int tolua_set_type_session_ly(lua_State* tolua_S)
+{
+  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  tolua_Error tolua_err;
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'ly'",NULL);
+  if (!tolua_isnumber(tolua_S,2,0,&tolua_err))
+   tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
+#endif
+  self->ly = ((short)  tolua_tonumber(tolua_S,2,0))
 ;
  return 0;
 }
@@ -826,6 +848,36 @@ static int tolua_set_type_session_port(lua_State* tolua_S)
    tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
 #endif
   self->port = ((int)  tolua_tonumber(tolua_S,2,0))
+;
+ return 0;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* get function: cost of class  type_session */
+#ifndef TOLUA_DISABLE_tolua_get_type_session_unsigned_cost
+static int tolua_get_type_session_unsigned_cost(lua_State* tolua_S)
+{
+  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'cost'",NULL);
+#endif
+  tolua_pushnumber(tolua_S,(lua_Number)self->cost);
+ return 1;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* set function: cost of class  type_session */
+#ifndef TOLUA_DISABLE_tolua_set_type_session_unsigned_cost
+static int tolua_set_type_session_unsigned_cost(lua_State* tolua_S)
+{
+  type_session* self = (type_session*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  tolua_Error tolua_err;
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'cost'",NULL);
+  if (!tolua_isnumber(tolua_S,2,0,&tolua_err))
+   tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
+#endif
+  self->cost = ((unsigned short)  tolua_tonumber(tolua_S,2,0))
 ;
  return 0;
 }
@@ -1573,6 +1625,36 @@ static int tolua_set_type_blt_obj_no(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* get function: sess_index of class  type_blt */
+#ifndef TOLUA_DISABLE_tolua_get_type_blt_unsigned_sess_index
+static int tolua_get_type_blt_unsigned_sess_index(lua_State* tolua_S)
+{
+  type_blt* self = (type_blt*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'sess_index'",NULL);
+#endif
+  tolua_pushnumber(tolua_S,(lua_Number)self->sess_index);
+ return 1;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* set function: sess_index of class  type_blt */
+#ifndef TOLUA_DISABLE_tolua_set_type_blt_unsigned_sess_index
+static int tolua_set_type_blt_unsigned_sess_index(lua_State* tolua_S)
+{
+  type_blt* self = (type_blt*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  tolua_Error tolua_err;
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'sess_index'",NULL);
+  if (!tolua_isnumber(tolua_S,2,0,&tolua_err))
+   tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
+#endif
+  self->sess_index = ((unsigned char)  tolua_tonumber(tolua_S,2,0))
+;
+ return 0;
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* get function: proc_flg of class  type_blt */
 #ifndef TOLUA_DISABLE_tolua_get_type_blt_unsigned_proc_flg
 static int tolua_get_type_blt_unsigned_proc_flg(lua_State* tolua_S)
@@ -1774,7 +1856,7 @@ static int tolua_get_thg_type_blt_option(lua_State* tolua_S)
  if (tolua_index<0 || tolua_index>=OBJ_OPTION_COUNT)
   tolua_error(tolua_S,"array indexing out of range.",NULL);
 #endif
-  tolua_pushusertype(tolua_S,(void*)&self->option[tolua_index],"DWORD");
+ tolua_pushnumber(tolua_S,(lua_Number)self->option[tolua_index]);
  return 1;
 }
 #endif //#ifndef TOLUA_DISABLE
@@ -1800,7 +1882,7 @@ static int tolua_set_thg_type_blt_option(lua_State* tolua_S)
  if (tolua_index<0 || tolua_index>=OBJ_OPTION_COUNT)
   tolua_error(tolua_S,"array indexing out of range.",NULL);
 #endif
-  self->option[tolua_index] = *((DWORD*)  tolua_tousertype(tolua_S,3,0));
+  self->option[tolua_index] = ((unsigned long)  tolua_tonumber(tolua_S,3,0));
  return 0;
 }
 #endif //#ifndef TOLUA_DISABLE
@@ -1950,6 +2032,36 @@ static int tolua_set_type_blt_unsigned_bullet_type(lua_State* tolua_S)
    tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
 #endif
   self->bullet_type = ((unsigned char)  tolua_tonumber(tolua_S,2,0))
+;
+ return 0;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* get function: tex_index of class  type_blt */
+#ifndef TOLUA_DISABLE_tolua_get_type_blt_unsigned_tex_index
+static int tolua_get_type_blt_unsigned_tex_index(lua_State* tolua_S)
+{
+  type_blt* self = (type_blt*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'tex_index'",NULL);
+#endif
+  tolua_pushnumber(tolua_S,(lua_Number)self->tex_index);
+ return 1;
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* set function: tex_index of class  type_blt */
+#ifndef TOLUA_DISABLE_tolua_set_type_blt_unsigned_tex_index
+static int tolua_set_type_blt_unsigned_tex_index(lua_State* tolua_S)
+{
+  type_blt* self = (type_blt*)  tolua_tousertype(tolua_S,1,0);
+#ifndef TOLUA_RELEASE
+  tolua_Error tolua_err;
+  if (!self) tolua_error(tolua_S,"invalid 'self' in accessing variable 'tex_index'",NULL);
+  if (!tolua_isnumber(tolua_S,2,0,&tolua_err))
+   tolua_error(tolua_S,"#vinvalid type in variable assignment.",&tolua_err);
+#endif
+  self->tex_index = ((unsigned char)  tolua_tonumber(tolua_S,2,0))
 ;
  return 0;
 }
@@ -2779,6 +2891,132 @@ static int tolua_thg_C_SetCharaExtData200(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
+/* function: C_AddCharaItem */
+#ifndef TOLUA_DISABLE_tolua_thg_C_AddCharaItem00
+static int tolua_thg_C_AddCharaItem00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  int obj_no = ((int)  tolua_tonumber(tolua_S,1,0));
+  int item_flg = ((int)  tolua_tonumber(tolua_S,2,0));
+  {
+   bool tolua_ret = (bool)  C_AddCharaItem(obj_no,item_flg);
+   tolua_pushboolean(tolua_S,(bool)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'C_AddCharaItem'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function: C_SetCharaState */
+#ifndef TOLUA_DISABLE_tolua_thg_C_SetCharaState00
+static int tolua_thg_C_SetCharaState00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,3,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,4,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  int obj_no = ((int)  tolua_tonumber(tolua_S,1,0));
+  int chr_stt = ((int)  tolua_tonumber(tolua_S,2,0));
+  int val = ((int)  tolua_tonumber(tolua_S,3,0));
+  {
+   bool tolua_ret = (bool)  C_SetCharaState(obj_no,chr_stt,val);
+   tolua_pushboolean(tolua_S,(bool)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'C_SetCharaState'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function: C_GetCharaState */
+#ifndef TOLUA_DISABLE_tolua_thg_C_GetCharaState00
+static int tolua_thg_C_GetCharaState00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  int obj_no = ((int)  tolua_tonumber(tolua_S,1,0));
+  int chr_stt = ((int)  tolua_tonumber(tolua_S,2,0));
+  {
+   int tolua_ret = (int)  C_GetCharaState(obj_no,chr_stt);
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'C_GetCharaState'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
+/* function: C_GetCharaItem */
+#ifndef TOLUA_DISABLE_tolua_thg_C_GetCharaItem00
+static int tolua_thg_C_GetCharaItem00(lua_State* tolua_S)
+{
+#ifndef TOLUA_RELEASE
+ tolua_Error tolua_err;
+ if (
+     !tolua_isnumber(tolua_S,1,0,&tolua_err) ||
+     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
+     !tolua_isnoobj(tolua_S,3,&tolua_err)
+ )
+  goto tolua_lerror;
+ else
+#endif
+ {
+  int obj_no = ((int)  tolua_tonumber(tolua_S,1,0));
+  int item_index = ((int)  tolua_tonumber(tolua_S,2,0));
+  {
+   unsigned long tolua_ret = (unsigned long)  C_GetCharaItem(obj_no,item_index);
+   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
+  }
+ }
+ return 1;
+#ifndef TOLUA_RELEASE
+ tolua_lerror:
+ tolua_error(tolua_S,"#ferror in function 'C_GetCharaItem'.",&tolua_err);
+ return 0;
+#endif
+}
+#endif //#ifndef TOLUA_DISABLE
+
 /* function: C_UpdateBulletState */
 #ifndef TOLUA_DISABLE_tolua_thg_C_UpdateBulletState00
 static int tolua_thg_C_UpdateBulletState00(lua_State* tolua_S)
@@ -3359,132 +3597,6 @@ static int tolua_thg_C_GetBulletExtData200(lua_State* tolua_S)
 }
 #endif //#ifndef TOLUA_DISABLE
 
-/* function: C_AddCharaItem */
-#ifndef TOLUA_DISABLE_tolua_thg_C_AddCharaItem00
-static int tolua_thg_C_AddCharaItem00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isnumber(tolua_S,1,0,&tolua_err) ||
-     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,3,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  int obj_no = ((int)  tolua_tonumber(tolua_S,1,0));
-  int item_flg = ((int)  tolua_tonumber(tolua_S,2,0));
-  {
-   bool tolua_ret = (bool)  C_AddCharaItem(obj_no,item_flg);
-   tolua_pushboolean(tolua_S,(bool)tolua_ret);
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'C_AddCharaItem'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* function: C_SetCharaState */
-#ifndef TOLUA_DISABLE_tolua_thg_C_SetCharaState00
-static int tolua_thg_C_SetCharaState00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isnumber(tolua_S,1,0,&tolua_err) ||
-     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
-     !tolua_isnumber(tolua_S,3,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,4,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  int obj_no = ((int)  tolua_tonumber(tolua_S,1,0));
-  int chr_stt = ((int)  tolua_tonumber(tolua_S,2,0));
-  int val = ((int)  tolua_tonumber(tolua_S,3,0));
-  {
-   bool tolua_ret = (bool)  C_SetCharaState(obj_no,chr_stt,val);
-   tolua_pushboolean(tolua_S,(bool)tolua_ret);
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'C_SetCharaState'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* function: C_GetCharaState */
-#ifndef TOLUA_DISABLE_tolua_thg_C_GetCharaState00
-static int tolua_thg_C_GetCharaState00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isnumber(tolua_S,1,0,&tolua_err) ||
-     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,3,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  int obj_no = ((int)  tolua_tonumber(tolua_S,1,0));
-  int chr_stt = ((int)  tolua_tonumber(tolua_S,2,0));
-  {
-   int tolua_ret = (int)  C_GetCharaState(obj_no,chr_stt);
-   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'C_GetCharaState'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
-/* function: C_GetCharaItem */
-#ifndef TOLUA_DISABLE_tolua_thg_C_GetCharaItem00
-static int tolua_thg_C_GetCharaItem00(lua_State* tolua_S)
-{
-#ifndef TOLUA_RELEASE
- tolua_Error tolua_err;
- if (
-     !tolua_isnumber(tolua_S,1,0,&tolua_err) ||
-     !tolua_isnumber(tolua_S,2,0,&tolua_err) ||
-     !tolua_isnoobj(tolua_S,3,&tolua_err)
- )
-  goto tolua_lerror;
- else
-#endif
- {
-  int obj_no = ((int)  tolua_tonumber(tolua_S,1,0));
-  int item_index = ((int)  tolua_tonumber(tolua_S,2,0));
-  {
-   unsigned long tolua_ret = (unsigned long)  C_GetCharaItem(obj_no,item_index);
-   tolua_pushnumber(tolua_S,(lua_Number)tolua_ret);
-  }
- }
- return 1;
-#ifndef TOLUA_RELEASE
- tolua_lerror:
- tolua_error(tolua_S,"#ferror in function 'C_GetCharaItem'.",&tolua_err);
- return 0;
-#endif
-}
-#endif //#ifndef TOLUA_DISABLE
-
 /* function: C_UpdateBulletAngle */
 #ifndef TOLUA_DISABLE_tolua_thg_C_UpdateBulletAngle00
 static int tolua_thg_C_UpdateBulletAngle00(lua_State* tolua_S)
@@ -3977,13 +4089,13 @@ static int tolua_thg_C_SetEffectTexture00(lua_State* tolua_S)
  else
 #endif
  {
-  int nEffectNo = ((int)  tolua_tonumber(tolua_S,1,0));
+  int effect_no = ((int)  tolua_tonumber(tolua_S,1,0));
   double left = ((double)  tolua_tonumber(tolua_S,2,0));
   double top = ((double)  tolua_tonumber(tolua_S,3,0));
   double right = ((double)  tolua_tonumber(tolua_S,4,0));
   double bottom = ((double)  tolua_tonumber(tolua_S,5,0));
   {
-   bool tolua_ret = (bool)  C_SetEffectTexture(nEffectNo,left,top,right,bottom);
+   bool tolua_ret = (bool)  C_SetEffectTexture(effect_no,left,top,right,bottom);
    tolua_pushboolean(tolua_S,(bool)tolua_ret);
   }
  }
@@ -4948,11 +5060,6 @@ TOLUA_API int tolua_thg_open (lua_State* tolua_S)
   tolua_constant(tolua_S,"OBJ_TYPE_STAGE",OBJ_TYPE_STAGE);
   tolua_constant(tolua_S,"OBJ_TYPE_TACTIC",OBJ_TYPE_TACTIC);
   tolua_constant(tolua_S,"OBJ_TYPE_SLIDE",OBJ_TYPE_SLIDE);
-  tolua_constant(tolua_S,"OBJ_STATE_NONE",OBJ_STATE_NONE);
-  tolua_constant(tolua_S,"OBJ_STATE_ROOM",OBJ_STATE_ROOM);
-  tolua_constant(tolua_S,"OBJ_STATE_LOAD",OBJ_STATE_LOAD);
-  tolua_constant(tolua_S,"OBJ_STATE_GAME",OBJ_STATE_GAME);
-  tolua_constant(tolua_S,"OBJ_STATE_RESULT",OBJ_STATE_RESULT);
   tolua_constant(tolua_S,"OBJ_STATE_MAIN_WAIT_FLG",OBJ_STATE_MAIN_WAIT_FLG);
   tolua_constant(tolua_S,"OBJ_STATE_MAIN_ACTIVE_FLG",OBJ_STATE_MAIN_ACTIVE_FLG);
   tolua_constant(tolua_S,"OBJ_STATE_MAIN_DEAD_FLG",OBJ_STATE_MAIN_DEAD_FLG);
@@ -4974,8 +5081,14 @@ TOLUA_API int tolua_thg_open (lua_State* tolua_S)
   tolua_constant(tolua_S,"DEF_STATE_TRIGGER_SPELL",DEF_STATE_TRIGGER_SPELL);
   tolua_constant(tolua_S,"DEF_STATE_SHOT",DEF_STATE_SHOT);
   tolua_constant(tolua_S,"DEF_STATE_GALLERY",DEF_STATE_GALLERY);
+  tolua_constant(tolua_S,"OBJ_STATE_NONE",OBJ_STATE_NONE);
+  tolua_constant(tolua_S,"OBJ_STATE_ROOM",OBJ_STATE_ROOM);
+  tolua_constant(tolua_S,"OBJ_STATE_LOAD",OBJ_STATE_LOAD);
+  tolua_constant(tolua_S,"OBJ_STATE_GAME",OBJ_STATE_GAME);
+  tolua_constant(tolua_S,"OBJ_STATE_RESULT",OBJ_STATE_RESULT);
   tolua_constant(tolua_S,"DEF_MAX_SHOT_POWER",DEF_MAX_SHOT_POWER);
   tolua_constant(tolua_S,"FPS",FPS);
+  tolua_constant(tolua_S,"FPSO",FPSO);
   tolua_constant(tolua_S,"MAX_WIND_VALUE",MAX_WIND_VALUE);
   tolua_constant(tolua_S,"MIN_WIND_VALUE",MIN_WIND_VALUE);
   tolua_constant(tolua_S,"GAME_ITEM_MOVE_UP",GAME_ITEM_MOVE_UP);
@@ -5046,10 +5159,9 @@ TOLUA_API int tolua_thg_open (lua_State* tolua_S)
    tolua_variable(tolua_S,"vy",tolua_get_type_session_vy,tolua_set_type_session_vy);
    tolua_variable(tolua_S,"ax",tolua_get_type_session_ax,tolua_set_type_session_ax);
    tolua_variable(tolua_S,"ay",tolua_get_type_session_ay,tolua_set_type_session_ay);
-   tolua_variable(tolua_S,"lx",tolua_get_type_session_lx,tolua_set_type_session_lx);
-   tolua_variable(tolua_S,"ly",tolua_get_type_session_ly,tolua_set_type_session_ly);
    tolua_variable(tolua_S,"angle",tolua_get_type_session_angle,tolua_set_type_session_angle);
    tolua_variable(tolua_S,"obj_no",tolua_get_type_session_obj_no,tolua_set_type_session_obj_no);
+   tolua_variable(tolua_S,"sess_index",tolua_get_type_session_unsigned_sess_index,tolua_set_type_session_unsigned_sess_index);
    tolua_variable(tolua_S,"proc_flg",tolua_get_type_session_unsigned_proc_flg,tolua_set_type_session_unsigned_proc_flg);
    tolua_variable(tolua_S,"frame_count",tolua_get_type_session_unsigned_frame_count,tolua_set_type_session_unsigned_frame_count);
    tolua_variable(tolua_S,"turn_count",tolua_get_type_session_unsigned_turn_count,tolua_set_type_session_unsigned_turn_count);
@@ -5059,11 +5171,14 @@ TOLUA_API int tolua_thg_open (lua_State* tolua_S)
    tolua_array(tolua_S,"option",tolua_get_thg_type_session_option,tolua_set_thg_type_session_option);
    tolua_array(tolua_S,"name",tolua_get_thg_type_session_name,tolua_set_thg_type_session_name);
    tolua_variable(tolua_S,"name_len",tolua_get_type_session_unsigned_name_len,tolua_set_type_session_unsigned_name_len);
+   tolua_variable(tolua_S,"lx",tolua_get_type_session_lx,tolua_set_type_session_lx);
+   tolua_variable(tolua_S,"ly",tolua_get_type_session_ly,tolua_set_type_session_ly);
    tolua_variable(tolua_S,"sock",tolua_get_type_session_sock,tolua_set_type_session_sock);
    tolua_variable(tolua_S,"addr",tolua_get_type_session_addr,tolua_set_type_session_addr);
    tolua_variable(tolua_S,"sessionkey",tolua_get_type_session_sessionkey,tolua_set_type_session_sessionkey);
    tolua_variable(tolua_S,"clientver",tolua_get_type_session_clientver,tolua_set_type_session_clientver);
    tolua_variable(tolua_S,"port",tolua_get_type_session_port,tolua_set_type_session_port);
+   tolua_variable(tolua_S,"cost",tolua_get_type_session_unsigned_cost,tolua_set_type_session_unsigned_cost);
    tolua_array(tolua_S,"items",tolua_get_thg_type_session_items,tolua_set_thg_type_session_items);
    tolua_variable(tolua_S,"dir",tolua_get_type_session_dir,tolua_set_type_session_dir);
    tolua_variable(tolua_S,"master",tolua_get_type_session_unsigned_master,tolua_set_type_session_unsigned_master);
@@ -5095,6 +5210,7 @@ TOLUA_API int tolua_thg_open (lua_State* tolua_S)
    tolua_variable(tolua_S,"ay",tolua_get_type_blt_ay,tolua_set_type_blt_ay);
    tolua_variable(tolua_S,"angle",tolua_get_type_blt_angle,tolua_set_type_blt_angle);
    tolua_variable(tolua_S,"obj_no",tolua_get_type_blt_obj_no,tolua_set_type_blt_obj_no);
+   tolua_variable(tolua_S,"sess_index",tolua_get_type_blt_unsigned_sess_index,tolua_set_type_blt_unsigned_sess_index);
    tolua_variable(tolua_S,"proc_flg",tolua_get_type_blt_unsigned_proc_flg,tolua_set_type_blt_unsigned_proc_flg);
    tolua_variable(tolua_S,"frame_count",tolua_get_type_blt_unsigned_frame_count,tolua_set_type_blt_unsigned_frame_count);
    tolua_variable(tolua_S,"turn_count",tolua_get_type_blt_unsigned_turn_count,tolua_set_type_blt_unsigned_turn_count);
@@ -5107,6 +5223,7 @@ TOLUA_API int tolua_thg_open (lua_State* tolua_S)
    tolua_variable(tolua_S,"chr_obj_no",tolua_get_type_blt_chr_obj_no,tolua_set_type_blt_chr_obj_no);
    tolua_variable(tolua_S,"chara_type",tolua_get_type_blt_unsigned_chara_type,tolua_set_type_blt_unsigned_chara_type);
    tolua_variable(tolua_S,"bullet_type",tolua_get_type_blt_unsigned_bullet_type,tolua_set_type_blt_unsigned_bullet_type);
+   tolua_variable(tolua_S,"tex_index",tolua_get_type_blt_unsigned_tex_index,tolua_set_type_blt_unsigned_tex_index);
    tolua_variable(tolua_S,"bx",tolua_get_type_blt_bx,tolua_set_type_blt_bx);
    tolua_variable(tolua_S,"by",tolua_get_type_blt_by,tolua_set_type_blt_by);
    tolua_variable(tolua_S,"adx",tolua_get_type_blt_adx,tolua_set_type_blt_adx);
@@ -5140,6 +5257,10 @@ TOLUA_API int tolua_thg_open (lua_State* tolua_S)
   tolua_function(tolua_S,"C_GetCharaExtData2",tolua_thg_C_GetCharaExtData200);
   tolua_function(tolua_S,"C_SetCharaExtData1",tolua_thg_C_SetCharaExtData100);
   tolua_function(tolua_S,"C_SetCharaExtData2",tolua_thg_C_SetCharaExtData200);
+  tolua_function(tolua_S,"C_AddCharaItem",tolua_thg_C_AddCharaItem00);
+  tolua_function(tolua_S,"C_SetCharaState",tolua_thg_C_SetCharaState00);
+  tolua_function(tolua_S,"C_GetCharaState",tolua_thg_C_GetCharaState00);
+  tolua_function(tolua_S,"C_GetCharaItem",tolua_thg_C_GetCharaItem00);
   tolua_function(tolua_S,"C_UpdateBulletState",tolua_thg_C_UpdateBulletState00);
   tolua_function(tolua_S,"C_UpdateBulletPosition",tolua_thg_C_UpdateBulletPosition00);
   tolua_function(tolua_S,"C_UpdateBulletVector",tolua_thg_C_UpdateBulletVector00);
@@ -5158,10 +5279,6 @@ TOLUA_API int tolua_thg_open (lua_State* tolua_S)
   tolua_function(tolua_S,"C_GetBulletAtkValue",tolua_thg_C_GetBulletAtkValue00);
   tolua_function(tolua_S,"C_GetBulletExtData1",tolua_thg_C_GetBulletExtData100);
   tolua_function(tolua_S,"C_GetBulletExtData2",tolua_thg_C_GetBulletExtData200);
-  tolua_function(tolua_S,"C_AddCharaItem",tolua_thg_C_AddCharaItem00);
-  tolua_function(tolua_S,"C_SetCharaState",tolua_thg_C_SetCharaState00);
-  tolua_function(tolua_S,"C_GetCharaState",tolua_thg_C_GetCharaState00);
-  tolua_function(tolua_S,"C_GetCharaItem",tolua_thg_C_GetCharaItem00);
   tolua_function(tolua_S,"C_UpdateBulletAngle",tolua_thg_C_UpdateBulletAngle00);
   tolua_function(tolua_S,"C_SetBulletTextureIndex",tolua_thg_C_SetBulletTextureIndex00);
   tolua_function(tolua_S,"C_SetCharaTexture",tolua_thg_C_SetCharaTexture00);

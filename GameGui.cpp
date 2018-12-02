@@ -310,11 +310,23 @@ void CALLBACK CGame::GUIRoom(UINT nEvent, int nControlID, CDXUTControl* pControl
 		break;
 	case IDC_ROOM_BTN_MY_ITEM_SEL_L:
 		PlaySysSoundSE(SE_sub_Arrow);
-		m_pMyItemBtnList->OnLeftButtonDown();
+		if (nEvent == EVENT_BUTTON_CLICKED) {
+			m_pMyItemBtnList->OnLeftButtonDown();
+		} else {
+			for (int i=0; i<7; i++) {
+				m_pMyItemBtnList->OnLeftButtonDown();
+			}
+		}
 		break;
 	case IDC_ROOM_BTN_MY_ITEM_SEL_R:
 		PlaySysSoundSE(SE_sub_Arrow);
-		m_pMyItemBtnList->OnRightButtonDown();
+		if (nEvent == EVENT_BUTTON_CLICKED) {
+			m_pMyItemBtnList->OnRightButtonDown(g_nMaxItemStockCount);
+		} else {
+			for (int i=0; i<7; i++) {
+				m_pMyItemBtnList->OnRightButtonDown(g_nMaxItemStockCount);
+			}
+		}
 		break;
 	case IDC_ROOM_BTN_CHARA_SEL_RANDOM:		// キャラランダムセレクト
 #if RTRIAL
@@ -348,7 +360,7 @@ void CALLBACK CGame::GUIRoom(UINT nEvent, int nControlID, CDXUTControl* pControl
 			PlaySysSoundSE(SE_sur_ListSel);
 			OnSelectItemBtnList(p_pUI->GetRadioButton(nControlID));
 		}// 使用アイテム欄クリック
-		else if (nControlID >= IDC_MAIN_BTN_MY_ITEM_BASE && nControlID < (IDC_MAIN_BTN_MY_ITEM_BASE+GAME_ITEM_STOCK_MAX_COUNT))
+		else if (nControlID >= IDC_MAIN_BTN_MY_ITEM_BASE && nControlID < (IDC_MAIN_BTN_MY_ITEM_BASE+g_nMaxItemStockCount))
 		{
 			if (nEvent == EVENT_BUTTON_CLICKED)
 			{
@@ -465,17 +477,29 @@ void CALLBACK CGame::GUIMain(UINT nEvent, int nControlID, CDXUTControl* pControl
 		break;
 	case IDC_ROOM_BTN_MY_ITEM_SEL_L:
 		PlaySysSoundSE(SE_sub_Arrow);
-		m_pMyItemBtnList->OnLeftButtonDown();
+		if (nEvent == EVENT_BUTTON_CLICKED) {
+			m_pMyItemBtnList->OnLeftButtonDown();
+		} else {
+			for (int i=0; i < 4; i++) {
+				m_pMyItemBtnList->OnLeftButtonDown();
+			}
+		}
 		break;
 	case IDC_MAIN_BTN_MY_ITEM_SEL_R:
 		PlaySysSoundSE(SE_sub_Arrow);
-		m_pMyItemBtnList->OnRightButtonDown();
+		if (nEvent == EVENT_BUTTON_CLICKED) {
+			m_pMyItemBtnList->OnRightButtonDown(g_nMaxItemStockCount);
+		} else {
+			for (int i=0; i < 4; i++) {
+				m_pMyItemBtnList->OnRightButtonDown(g_nMaxItemStockCount);
+			}
+		}
 		break;
 	default:	
 		// 弾選択ボタンが押下された
 		if (nControlID >= IDC_MAIN_BTN_SEL_BULLET_BASE && nControlID < (IDC_MAIN_BTN_SEL_BULLET_BASE+MAX_CHARA_BULLET_TYPE+1))
 			OnSelectBulletType(nControlID);
-		else if (nControlID >= IDC_MAIN_BTN_MY_ITEM_BASE && nControlID < (IDC_MAIN_BTN_MY_ITEM_BASE+GAME_ITEM_STOCK_MAX_COUNT))
+		else if (nControlID >= IDC_MAIN_BTN_MY_ITEM_BASE && nControlID < (IDC_MAIN_BTN_MY_ITEM_BASE+g_nMaxItemStockCount))
 		{
 			if (nEvent == EVENT_BUTTON_CLICKED)
 				ReqUseItem(nControlID);

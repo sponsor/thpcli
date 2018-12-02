@@ -6,6 +6,7 @@ $#include "..\ext.h"
 #define CHARA_FACE_NORMAL			(1)
 #define CHARA_FACE_HURT				(2)
 
+
 #define BLT_PROC_TYPE_SCR_CHARA			(0)
 #define BLT_PROC_TYPE_SCR_STAGE			(1)
 #define BLT_PROC_TYPE_SCR_SPELL				(2)
@@ -24,7 +25,7 @@ $#include "..\ext.h"
 #define DEF_BLT_TRG_TYPE_NOMOVE				(DEF_BLT_TRG_TYPE_NOANGLE+1)
 
 #define STAGE_OBJ_NO									(0xFFFF)
-#define DEF_STAGE_OBJ_NO							STAGE_OBJ_NO
+#define DEF_STAGE_OBJ_NO								(0xFFFF)
 #define DEF_STAGE_ID									(0xFF)
 #define DEF_SYSTEM_ID								(0xFE)
 
@@ -37,11 +38,6 @@ $#include "..\ext.h"
 #define OBJ_TYPE_TACTIC			(0x10)
 #define OBJ_TYPE_SLIDE				(0x20)
 
-#define OBJ_STATE_NONE								(0x08000000)
-#define OBJ_STATE_ROOM								(0x10000000)
-#define OBJ_STATE_LOAD								(0x20000000)
-#define OBJ_STATE_GAME								(0x40000000)
-#define OBJ_STATE_RESULT							(0x80000000)
 
 #define OBJ_STATE_MAIN_WAIT_FLG			(0x00000001)
 #define OBJ_STATE_MAIN_ACTIVE_FLG			(0x00000002)
@@ -66,8 +62,15 @@ $#include "..\ext.h"
 #define DEF_STATE_SHOT								OBJ_STATE_MAIN_SHOT_FLG
 #define DEF_STATE_GALLERY						OBJ_STATE_MAIN_GALLERY_FLG
 
+#define OBJ_STATE_NONE								(0x08000000)
+#define OBJ_STATE_ROOM								(0x10000000)
+#define OBJ_STATE_LOAD								(0x20000000)
+#define OBJ_STATE_GAME								(0x40000000)
+#define OBJ_STATE_RESULT							(0x80000000)
+
 #define DEF_MAX_SHOT_POWER					(200*10)
-#define FPS													30
+#define FPS										60
+#define FPSO									30
 #define MAX_WIND_VALUE							10
 #define MIN_WIND_VALUE							-10
 
@@ -145,19 +148,17 @@ typedef struct connection_info
 {
 	E_TYPE_OBJ_STATE	obj_state;		// 状態
 	unsigned char		obj_type;							// PC / BLT / ITEM
-
+	
 	short		vx;		// 移動方向x座標
 	short		vy;		// 移動方向y座標
 
 	short		ax;		// 現在位置x
 	short		ay;		// 現在位置y
-
-	short		lx;		// ロビーx
-	short		ly;		// ロビーy
 	
 	short		angle;	// 体の傾き(360°)
 
 	short		obj_no;			// USER_NO / NPC_NO …
+	unsigned char		sess_index;		// USER_INDEX / NPC_INDEX ...
 	unsigned short proc_flg;			// proc flg
 	unsigned short	frame_count;	// Frame
 	unsigned short	turn_count;	// Turn
@@ -166,17 +167,22 @@ typedef struct connection_info
 	
 	unsigned long	extdata1;
 	unsigned long	extdata2;
-	DWORD	option[OBJ_OPTION_COUNT];
+	unsigned long	option[OBJ_OPTION_COUNT];
 	
 	wchar_t	name[MAX_USER_NAME];	// オブジェクト名
 	unsigned char		name_len;							// 
 
+	short		lx;		// ロビーx
+	short		ly;		// ロビーy
+	
 	int			sock;				// 生成されたソケット番号
 	int	    addr;				// クライアントアドレス
 	int	    sessionkey;	// チャットサーバーでは不使用 - サーバー移動時の秘密キー
 	int 		clientver;		// ゲームバージョン
 	int		port;				// ポート番号（チャットサーバーでは不使用）
 
+	unsigned short	cost;
+	
 	// 部屋情報
 	unsigned long		items[GAME_ITEM_STOCK_MAX_COUNT];	// アイテム番号
 	E_TYPE_USER_DIRECTION	dir;			// 向き
@@ -199,35 +205,39 @@ typedef struct connection_info
 
 } type_session;
 
-typedef struct connection_info
+typedef struct
 {
 	E_TYPE_OBJ_STATE	obj_state;		// 状態
 	unsigned char		obj_type;							// PC / BLT / ITEM
-
+	
 	short		vx;		// 移動方向x座標
 	short		vy;		// 移動方向y座標
 
 	short		ax;		// 現在位置x
 	short		ay;		// 現在位置y
-
+	
 	short		angle;	// 体の傾き(360°)
 
 	short		obj_no;			// USER_NO / NPC_NO …
+	unsigned char		sess_index;		// USER_INDEX / NPC_INDEX ...
 	unsigned short proc_flg;			// proc flg
 	unsigned short	frame_count;	// Frame
 	unsigned short	turn_count;	// Turn
+
 	TCHARA_SCR_INFO* scrinfo;
 	
 	unsigned long	extdata1;
 	unsigned long	extdata2;
-	DWORD	option[OBJ_OPTION_COUNT];
+	unsigned long	option[OBJ_OPTION_COUNT];
 	
 	unsigned char proc_type;		// 0：スクリプト/　1：スクリプト使用しない
 	unsigned char hit_range;			// 当たり判定の半径
-	short chr_obj_no;
-	unsigned char chara_type;
-	unsigned char bullet_type;
-	
+	short chr_obj_no;		// 弾を撃ったキャラ番号(ステージの場合 STAGE_OBJ_NO )
+	unsigned char chara_type;		// 弾を撃ったキャラスクリプト番号
+
+	unsigned char bullet_type;		// スクリプト上の弾番号
+	unsigned char tex_index;
+
 	short bx;				// 移動の緩和
 	short by;				// 移動の緩和
 
@@ -261,6 +271,10 @@ extern unsigned int C_GetCharaExtData1(int obj_no);
 extern unsigned int C_GetCharaExtData2(int obj_no);
 extern bool C_SetCharaExtData1(int obj_no, unsigned long extdata1);
 extern bool C_SetCharaExtData2(int obj_no, unsigned long extdata2);
+extern bool C_AddCharaItem(int obj_no, int item_flg);
+extern bool C_SetCharaState(int obj_no, int chr_stt, int val);
+extern int C_GetCharaState(int obj_no, int chr_stt);
+extern unsigned long C_GetCharaItem(int obj_no, int item_index);
 
 extern bool C_UpdateBulletState(double obj_no, double state);
 
@@ -281,10 +295,6 @@ extern type_blt C_GetBulletInfo(int obj_no);
 extern int C_GetBulletAtkValue(int blt_no);
 extern unsigned int C_GetBulletExtData1(int obj_no);
 extern unsigned int C_GetBulletExtData2(int obj_no);
-extern bool C_AddCharaItem(int obj_no, int item_flg);
-extern bool C_SetCharaState(int obj_no, int chr_stt, int val);
-extern int C_GetCharaState(int obj_no, int chr_stt);
-extern unsigned long C_GetCharaItem(int obj_no, int item_index);
 
 extern bool C_UpdateBulletAngle(double blt_no, double angle);
 extern bool C_SetBulletTextureIndex(double blt_no, double index);
@@ -301,7 +311,7 @@ extern bool C_SetEffectRotation(double effect_no, double rot, double effect_time
 extern bool C_SetEffectScale(double effect_no, double scalex, double scaley);
 extern bool C_SetEffectScalling(double effect_no, double scalex, double scaley, double effect_time=0);
 extern bool C_SetEffectAnimation(double effect_no, double atime, double acount, bool loop, double effect_time=0);
-extern bool C_SetEffectTexture(int nEffectNo, double left, double top, double right, double bottom);
+extern bool C_SetEffectTexture(int effect_no, double left, double top, double right, double bottom);
 
 
 extern int C_AddBGEffect(double chr_id, double left, double top, double right, double bottom, double x, double y, double age);

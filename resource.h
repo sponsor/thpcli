@@ -116,8 +116,8 @@
 #define IDC_ROOM_BTN_STAGE_BASE		3060	// ステージ
 #define IDC_ROOM_BTN_CONFIG				3061	// コンフィグ
 
-#define IDC_ROOM_STATIC_NAME_BASE	3200		// 名前の表示用テキスト
-#define IDC_ROOM_STATIC_WORD_BASE	3100		// 発言の表示用テキスト
+#define IDC_ROOM_STATIC_NAME_BASE	3250		// 名前の表示用テキスト
+#define IDC_ROOM_STATIC_WORD_BASE	3200		// 発言の表示用テキスト
 #define IDC_ROOM_STATIC_WORD_W		120		// 発言の表示用テキスト横幅
 #define IDC_ROOM_STATIC_WORD_H		24			// 発言の表示用テキスト縦幅
 
@@ -136,22 +136,22 @@
 #define IDC_ROOM_RB_ITEM_R						3801		//	アイテム選択ボタン→
 #define IDC_ROOM_RB_ITEM_BASE_INDEX	3802		//	アイテム選択ボタンコントロールID
 #define IDC_ROOM_SPRITE_SC						3850		// スペルカードスプライト
-#define IDC_ROOM_STATIC_SC_NAME			3851		// スペルカード名
-#define IDC_ROOM_STATIC_SC_TEXT			3852		// [スペルカード]
-#define IDC_ROOM_BTN_STAGE_RND			3853 // ステージ
+#define IDC_ROOM_STATIC_SC_NAME			3970		// スペルカード名
+#define IDC_ROOM_STATIC_SC_TEXT			3971		// [スペルカード]
+#define IDC_ROOM_BTN_STAGE_RND			3972 // ステージ
 
-#define IDC_ROOM_SPIN_LIMIT_TURN_001	(3860)	// 制限ターン1の位
-#define IDC_ROOM_SPIN_LIMIT_TURN_010	(3870)	// 制限ターン10の位
-#define IDC_ROOM_SPIN_LIMIT_TURN_100	(3980)	// 制限ターン100の位
-#define IDC_STATIC_SPIN_LIMIT_TURN_TEXT	(3890)	// 制限ターン数
+#define IDC_ROOM_SPIN_LIMIT_TURN_001	(3975)	// 制限ターン1の位
+#define IDC_ROOM_SPIN_LIMIT_TURN_010	(3978)	// 制限ターン10の位
+#define IDC_ROOM_SPIN_LIMIT_TURN_100	(3981)	// 制限ターン100の位
+#define IDC_STATIC_SPIN_LIMIT_TURN_TEXT	(3985)	// 制限ターン数
 
-#define IDC_ROOM_STATIC_ACT_TIME_LIMIT_TEXT		(3891)	// 制限時間テキスト
-#define IDC_ROOM_STATIC_ACT_TIME_LIMIT_VALUE	(3892)	// 制限時間数字
-#define IDC_ROOM_BTN_ACT_TIME_LIMIT_L			(3893)	// 制限時間減
-#define IDC_ROOM_BTN_ACT_TIME_LIMIT_R			(3894)	// 制限時間増
-#define IDC_ROOM_STATIC_ITEM_REST_COST		(3895)	// アイテムコスト値
+#define IDC_ROOM_STATIC_ACT_TIME_LIMIT_TEXT		(3991)	// 制限時間テキスト
+#define IDC_ROOM_STATIC_ACT_TIME_LIMIT_VALUE	(3992)	// 制限時間数字
+#define IDC_ROOM_BTN_ACT_TIME_LIMIT_L			(3993)	// 制限時間減
+#define IDC_ROOM_BTN_ACT_TIME_LIMIT_R			(3994)	// 制限時間増
+#define IDC_ROOM_STATIC_ITEM_REST_COST		(3995)	// アイテムコスト値
 
-#define IDC_LOAD_SPRITE_TEXT					3901		// LOADING
+#define IDC_LOAD_SPRITE_TEXT					3999		// LOADING
 
 #define IDC_MAIN_STATIC_CHARA_NAME_BASE		(4000)	// キャラ用の名前表示
 #define IDC_MAIN_AL_SHOT_ANGLE_BASE			(4100)	// 発射角コントロール

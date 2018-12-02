@@ -33,7 +33,7 @@ public:
 	int AddButton(CDXUTControl* pBtn);
 	int InsertButton(int index, CDXUTControl* pBtn);
 
-	void OnRightButtonDown();
+	void OnRightButtonDown(int range=0);
 	void OnLeftButtonDown();
 
 	void SetLRPadding(int nValue)

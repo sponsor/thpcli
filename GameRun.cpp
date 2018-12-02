@@ -1111,7 +1111,7 @@ BOOL CGame::RunMainActive()
 				break;
 			}
 
-			m_pShotMeter->SetValue(m_pShotMeter->GetValue()+MAX_SHOT_COUNTUP);
+			m_pShotMeter->SetFloatValue(m_pShotMeter->GetFloatValue()+MAX_SHOT_COUNTUP);
 			break;
 		}
 	case GAME_MAIN_PHASE_TRIGGER:

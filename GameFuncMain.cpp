@@ -180,7 +180,7 @@ void CGame::SetMyIteamsEnabled(bool bEnabled)
 	// 有効化する場合は個別に確認
 	if (bEnabled)
 	{
-		for (int i=0;i<GAME_ITEM_STOCK_MAX_COUNT;i++)
+		for (int i=0;i<g_nMaxItemStockCount;i++)
 		{
 			if (p_pUI->GetControl(IDC_MAIN_BTN_MY_ITEM_BASE+i)->GetUserData())
 				p_pUI->GetControl(IDC_MAIN_BTN_MY_ITEM_BASE+i)->SetEnabled(true);
@@ -592,7 +592,7 @@ BOOL CGame::AddCharaItem(int nObjNo, int nSlot, DWORD dwItemFlg, BOOL bSteal)
 	ptype_session sess = GetSessionObj(nObjNo);
 	// 引数チェック
 	if (!sess) return FALSE;
-	if (nSlot < 0 && nSlot >= GAME_ITEM_STOCK_MAX_COUNT) return FALSE;
+	if (nSlot < 0 && nSlot >= g_nMaxItemStockCount) return FALSE;
 	if (!(dwItemFlg & GAME_ITEM_ENABLE_FLG))	return FALSE;
 	
 	sess->items[nSlot] = dwItemFlg;		// 設定
@@ -1434,7 +1434,7 @@ unsigned int CGame::GetCharaItem(int obj_no, int item_index)
 {
 	ptype_session sess = GetSessionObj(obj_no);
 	if (!sess) return 0;
-	if (item_index < 0 || item_index >= GAME_ITEM_STOCK_MAX_COUNT) return 0;
+	if (item_index < 0 || item_index >= g_nMaxItemStockCount) return 0;
 	return (unsigned long)sess->items[item_index];
 }
 

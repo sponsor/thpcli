@@ -65,8 +65,9 @@ BOOL PacketProc_Room(BYTE *data)
 				sess.dir = (E_TYPE_USER_DIRECTION)data[nIndex];
 				nIndex++;
 				sess.entity = 1;
-				sess.cost = GAME_ITEM_COST_MAX;
-				
+				memcpy(&sess.cost, (BYTE*)&data[nIndex], sizeof(short));
+				nIndex+= sizeof(short);
+
 				sess.connect_state = CONN_STATE_AUTHED;
 				// キャラ情報設定
 				g_pGame->SetNewUser(&sess, FALSE);
@@ -139,7 +140,10 @@ BOOL PacketProc_Room(BYTE *data)
 			nIndex++;
 			sess.connect_state = CONN_STATE_AUTHED;
 			sess.entity = 1;
-			sess.cost = GAME_ITEM_COST_MAX;
+			memcpy(&sess.cost, (BYTE*)&data[nIndex], sizeof(short));
+			g_nMaxCost = sess.cost;
+			g_nMaxItemStockCount = (int)(sess.cost/GAME_ITEM_01_COST);
+			nIndex+= sizeof(short);
 			// キャラ情報設定
 			g_pGame->SetNewUser(&sess, TRUE);
 			// 準備状態を設定
@@ -248,14 +252,15 @@ BOOL PacketProc_Room(BYTE *data)
 			int nItemIndex = data[4];		// アイテム欄No
 			DWORD dwItemFlg;
 			memcpy(&dwItemFlg, (void*)&data[5], sizeof(DWORD));	// アイテムフラグ
-			BYTE bytCost = data[9];
+			WORD wCost = 0;
+			memcpy(&wCost, &data[9], sizeof(short));
 
 			g_pCriticalSection->EnterCriticalSection_Session(L'I');
 			type_session* pSess = g_pGame->GetMySessionInfo();
 			if (pSess)
 			{
 				pSess->items[nItemIndex] = dwItemFlg;
-				pSess->cost = bytCost;
+				pSess->cost = wCost;
 				g_pGame->UpdateMyItems();
 			}
 			g_pCriticalSection->LeaveCriticalSection_Session();

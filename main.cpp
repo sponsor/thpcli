@@ -102,6 +102,8 @@ WCHAR						g_wsCmdPass[MAX_SRV_PASS+1];
 WCHAR						g_wsCmdIP[64];
 int								g_nCmdPort;
 int								g_nStageLoadType = 0;
+int							g_nMaxCost = DEFAULT_GAME_ITEM_COST_MAX;
+int							g_nMaxItemStockCount = (int)(DEFAULT_GAME_ITEM_COST_MAX/GAME_ITEM_01_COST);
 /*	===================================
   	=====      ê√ìIïœêî     =====
   	===================================*/

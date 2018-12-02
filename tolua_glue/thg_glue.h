@@ -1,6 +1,6 @@
 /*
 ** Lua binding: thg
-** Generated automatically by tolua++-1.0.92 on 12/31/16 03:14:32.
+** Generated automatically by tolua++-1.0.92 on 12/02/18 19:14:20.
 */
 
 /* Exported function */

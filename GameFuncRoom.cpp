@@ -783,13 +783,13 @@ void CGame::OnAddItemButtonDown()
 	if (m_nUserIndex >= GetMaxLoginNum() || m_nUserIndex < 0)	return;
 	int nItemIndex=0;
 	// 空いているアイテム欄を探す
-	for (;nItemIndex<GAME_ITEM_STOCK_MAX_COUNT;nItemIndex++)
+	for (;nItemIndex<g_nMaxItemStockCount;nItemIndex++)
 	{
 		if (!m_SessionArray[m_nUserIndex].items[nItemIndex])
 			break;
 	}
 	// 見つからなかったら、追加ボタンを無効化
-	if (nItemIndex >= GAME_ITEM_STOCK_MAX_COUNT)
+	if (nItemIndex >= g_nMaxItemStockCount)
 	{
 		p_pUI->GetControl(IDC_ROOM_BTN_ADD_ITEM)->SetEnabled(false);
 		return;
@@ -812,11 +812,17 @@ void CGame::OnAddItemButtonDown()
 void CGame::UpdateMyItems()
 {
 	// アイテムの表示更新
-	for (int i=0;i<GAME_ITEM_STOCK_MAX_COUNT;i++)
+	int i=0;
+	for (i=0;i<GAME_ITEM_STOCK_MAX_COUNT;i++)
 	{
 		CDXUTButton* pBtn = p_pUI->GetButton(IDC_ROOM_BTN_MY_ITEM_BASE+i);
 		if (!(m_bytRuleFlg & GAME_RULE_ITEM_ENABLE))
 		{
+			pBtn->SetEnabled(false);
+			continue;
+		}
+		if (i>=g_nMaxItemStockCount) {
+			pBtn->SetVisible(false);
 			pBtn->SetEnabled(false);
 			continue;
 		}
@@ -896,7 +902,7 @@ void CGame::CheckEnableItemAddButton()
 	if (!m_SessionArray[m_nUserIndex].game_ready)
 	{
 		// 追加可能なアイテム欄があるか確認
-		for (int i=0;i<GAME_ITEM_STOCK_MAX_COUNT;i++)
+		for (int i=0;i<g_nMaxItemStockCount;i++)
 		{
 			// フラグがNULLなら未使用欄
 			if (!m_SessionArray[m_nUserIndex].items[i])
@@ -922,7 +928,7 @@ void CGame::CheckEnableItemAddButton()
 BOOL CGame::OnMyItemButtonDown(int nControlID)
 {
 	int nItemIndex = nControlID - IDC_ROOM_BTN_MY_ITEM_BASE;
-	if (nItemIndex < 0 || nItemIndex >= GAME_ITEM_STOCK_MAX_COUNT)	return FALSE;
+	if (nItemIndex < 0 || nItemIndex >= g_nMaxItemStockCount)	return FALSE;
 	if (!GetMySessionInfo()->items[nItemIndex])
 		return FALSE;
 
@@ -1247,7 +1253,7 @@ void CGame::UpdatePropertyControlsEnabled()
 	p_pUI->GetControl(IDC_ROOM_BTN_ADD_ITEM)->SetEnabled(b);
 	m_pCharacterBtnList->SetEnable(b);
 	m_pItemBtnList->SetEnable(b);
-	for (int i=0;i<GAME_ITEM_STOCK_MAX_COUNT;i++)
+	for (int i=0;i<g_nMaxItemStockCount;i++)
 	{
 		if (p_pUI->GetControl(IDC_ROOM_BTN_MY_ITEM_BASE+i)->GetUserData())
 			p_pUI->GetControl(IDC_ROOM_BTN_MY_ITEM_BASE+i)->SetEnabled(b);

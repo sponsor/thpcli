@@ -1,4 +1,5 @@
 #include "CDXUTButtonList.h"
+#include "ext.h"
 
 CDXUTButtonList::CDXUTButtonList()
 {
@@ -65,10 +66,11 @@ int CDXUTButtonList::InsertButton(int index, CDXUTControl* pBtn)
 	return index;
 }
 
-void CDXUTButtonList::OnRightButtonDown()
+void CDXUTButtonList::OnRightButtonDown(int range)
 {
 	if (!m_bCreated) return;
-	if ((DWORD)m_nViewIndex < m_vecButtons.size()-1)
+	int maxRange = range == 0 ? this->m_vecButtons.size() : range;
+	if (m_nViewIndex < maxRange-1)
 	{
 		m_nViewIndex++;
 		CalcViewIndex();
